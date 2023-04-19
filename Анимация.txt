@@ -1,0 +1,225 @@
+css
+
+.go{
+  position: relative;
+  font-size: 20em;
+  color: #0e3742;
+  text-align: center;
+  -webkit-box-reflect: below -42px linear-gradient(transparent, #0004);
+}
+span{
+  animation: animate 5s linear infinite;
+  margin: 0 5px; 
+}
+span:nth-child(even){
+  animation-delay: 0.4s;
+}
+@keyframes animate{
+  0%, 18%, 20%, 50.1%, 60%, 65.1%, 80%, 90.1%, 92%
+  {
+    color: #272727;
+    text-shadow: none;
+  }
+  18.1%, 20.1%, 30%, 50%, 60.1%, 65%, 80.1%, 90%, 92.1%, 100%
+  {
+    color: #fff;
+    text-shadow: 0 0 10px #03bcf4,
+    0 0 20px #03bcf4,
+    0 0 40px #03bcf4,
+    0 0 80px #03bcf4,
+    0 0 160px #03bcf4,
+    0 0 400px #03bcf4;
+  }
+}
+
+
+/* задаём размеры области рисования SVG-элементов */
+svg {
+  /* ширина и высота привязана к размерам экрана */
+  width: 100vmin;
+  height: 75vmin;
+  /* убираем обводку у области рисования */
+  border: 0px dotted #f3f9f4;
+  position: absolute;
+  /* ставим тёмный фон */
+  background: #00000002;
+}
+
+
+
+  /* блоки */
+
+.preloader__scene {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: 1000;
+display: flex;
+overflow: hidden;
+}
+
+.preloader__block {
+  width: 50%;
+  background: linear-gradient(#F53803, #F5D020);;
+  animation:leftBlock  2.5s linear forwards;
+  border-radius: 10px;
+}
+
+.preloader__block:last-child {
+  animation:rightBlock 2.5s linear forwards;
+}
+
+.loading__block {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1001;
+  animation: loading .2s ease forwards; 
+  animation-delay: 1.3s;
+  box-shadow: #e0e0e0;
+}
+
+.title {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-family:"Century Gothic";
+  color:#ffffff;
+}
+
+.progress {
+  width: 200px;
+  height: 12px;
+  border: 1px solid rgb(100, 100, 100);
+  border-radius: 4px;
+  position: relative;
+
+}
+
+.progress:before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 2px;
+  background-color:#ffffff;
+  animation: progressLine  .5s ease forwards;
+  border-radius: 4px;
+ 
+}
+
+
+
+@keyframes loading {
+  from{
+    opacity: 1;
+  }
+  to{
+    opacity: 0;
+  }
+}
+
+@keyframes progressLine {
+  from {
+    width: 0;
+  }
+  to {
+    width: calc(100% - 4px);
+  }
+}
+
+
+@keyframes leftBlock {
+
+  0% {
+    transform: translateX(0) scale(1) rotateY(0);
+  }
+
+  50% {
+    transform: translateX(0) scale(.9) rotateY(-10deg);
+  }
+
+  100% {
+    transform: translateX(-110%) scale(.9) rotateY(-10deg);
+  }
+}
+
+
+
+@keyframes rightBlock {
+
+  0% {
+    transform: translateX(0) scale(1) rotateY(0);
+  }
+
+  50% {
+    transform: translateX(0) scale(.9) rotateY(10deg);
+  }
+
+  100% {
+    transform: translateX(110%) scale(.9) rotateY(10deg);
+  }
+}
+
+
+
+
+
+html
+
+
+ <!-- анимация -->
+<div class="preloader__scene">
+<div class="loading__block">
+  <div class="title">
+      Loading...
+  </div>
+<div class="progress"></div>
+</div>
+<div class="preloader__block">
+
+  <section class="section1">
+    <h2 class="go">
+      <span>Play</span>
+    </h2>
+  </section>
+
+  
+    <!-- указываем внутренние размеры графического контейнера, чтобы привязать к ним все элементы -->
+    <svg viewBox="0 0 100 75">
+      <!-- рисуем левую  платформы -->
+      <path d="m2,0 v15" />
+      <!-- рисуем оба круга на одном и том же месте -->
+      <circle cx="50" cy="68" r="5" />
+    
+    </svg>
+</div>
+
+<div class="preloader__block">
+
+  <section class="section1">
+    <h2 class="go">
+     <span>Now</span>
+    </h2>
+  </section>
+
+   <!-- указываем внутренние размеры графического контейнера, чтобы привязать к ним все элементы -->
+   <svg viewBox="0 0 100 75">
+    <!-- рисуем  правую платформы -->
+    <path d="m90,0 v15" />
+     <!-- рисуем оба круга на одном и том же месте -->
+    <circle cx="50" cy="68" r="5" />
+  </svg>
+</div>
+</div>
+
+ <!-- анимация -->
+
+
+
+
+
+
+
